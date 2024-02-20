@@ -111,7 +111,6 @@ controller_interface::return_type JointGroupVelocityController::update(
 
   // Check if last command is timed out
   if(cmd_timeout_ > 0 && *(latest_timestamp->get()) + rclcpp::Duration::from_seconds(cmd_timeout_) < time){
-      RCLCPP_INFO(get_node()->get_logger(), "No recent commands received, stopping motion");
       // Latest command timed out, stop all joints
       for (auto & command_interface : command_interfaces_)
       {
