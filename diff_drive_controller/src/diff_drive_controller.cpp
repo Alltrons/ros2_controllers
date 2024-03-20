@@ -252,10 +252,12 @@ controller_interface::return_type DiffDriveController::update(
   }
 
   // Compute wheels velocities:
-  const double velocity_left =
-    (linear_command - angular_command * wheel_separation / 2.0) / left_wheel_radius;
-  const double velocity_right =
-    (linear_command + angular_command * wheel_separation / 2.0) / right_wheel_radius;
+  double velocity_left =
+    // (linear_command - angular_command * wheel_separation / 2.0) / left_wheel_radius;
+    (linear_command - angular_command * wheel_separation / 2.0);
+  double velocity_right =
+    // (linear_command + angular_command * wheel_separation / 2.0) / right_wheel_radius;
+    (linear_command + angular_command * wheel_separation / 2.0);
 
   // Set wheels velocities:
   for (size_t index = 0; index < static_cast<size_t>(params_.wheels_per_side); ++index)
